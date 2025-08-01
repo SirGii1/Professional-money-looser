@@ -4,22 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRO LOOSER - For Those Who Lost It All</title>
+    <title>Professional Money Looser ($PML) - For Those Who Lost It All</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --accent-1: #ff4757;
+            --accent-2: #ff6b9d;
+            --accent-3: #ffa502;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.5);
         }
 
 ```
+    @media (prefers-color-scheme: light) {
+        :root {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --glass-bg: rgba(0, 0, 0, 0.05);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
-        background: linear-gradient(135deg, #ff6b6b, #ff8e53, #ff6b9d, #c44569);
+        background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3), #c44569);
         background-size: 400% 400%;
         animation: gradientShift 8s ease infinite;
         font-family: 'Arial', sans-serif;
-        color: white;
+        color: var(--text-primary);
         overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-primary);
+        opacity: 0.85;
+        z-index: -2;
     }
 
     @keyframes gradientShift {
@@ -32,6 +72,8 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
+        position: relative;
+        z-index: 1;
     }
 
     header {
@@ -45,14 +87,14 @@
         height: 200px;
         margin: 0 auto 30px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
         display: flex;
         align-items: center;
         justify-content: center;
         animation: float 3s ease-in-out infinite;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border: 3px solid var(--glass-border);
+        box-shadow: 0 20px 40px var(--shadow);
     }
 
     .logo img {
@@ -66,7 +108,8 @@
         font-size: 24px;
         font-weight: bold;
         text-align: center;
-        color: white;
+        color: var(--text-primary);
+        text-shadow: 2px 2px 4px var(--shadow);
     }
 
     @keyframes float {
@@ -77,43 +120,66 @@
     h1 {
         font-size: 4rem;
         font-weight: bold;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        text-shadow: 3px 3px 6px var(--shadow);
         margin-bottom: 20px;
         animation: glow 2s ease-in-out infinite alternate;
+        background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     @keyframes glow {
-        from { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); }
-        to { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.6); }
+        from { 
+            filter: drop-shadow(0 0 20px rgba(255, 71, 87, 0.3));
+        }
+        to { 
+            filter: drop-shadow(0 0 30px rgba(255, 71, 87, 0.6));
+        }
+    }
+
+    .ticker {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--accent-3);
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px var(--shadow);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
     }
 
     .tagline {
         font-size: 1.5rem;
         margin-bottom: 40px;
-        opacity: 0.9;
+        color: var(--text-secondary);
         animation: slideInUp 1s ease-out;
     }
 
     @keyframes slideInUp {
         from { transform: translateY(50px); opacity: 0; }
-        to { transform: translateY(0); opacity: 0.9; }
+        to { transform: translateY(0); opacity: 1; }
     }
 
     .ca-section {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(15px);
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
         border-radius: 20px;
         padding: 30px;
         margin: 40px 0;
         text-align: center;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        border: 2px solid var(--glass-border);
+        box-shadow: 0 20px 40px var(--shadow);
     }
 
     .ca-label {
         font-size: 1.2rem;
         margin-bottom: 15px;
         font-weight: bold;
+        color: var(--text-primary);
     }
 
     .ca-container {
@@ -125,18 +191,19 @@
     }
 
     .ca-address {
-        background: rgba(0, 0, 0, 0.3);
+        background: var(--bg-tertiary);
         padding: 15px 25px;
         border-radius: 10px;
         font-family: 'Courier New', monospace;
         font-size: 1rem;
         word-break: break-all;
         max-width: 500px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary);
     }
 
     .copy-btn {
-        background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+        background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
         border: none;
         padding: 15px 25px;
         border-radius: 10px;
@@ -145,12 +212,13 @@
         cursor: pointer;
         transition: all 0.3s ease;
         font-size: 1rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 5px 15px var(--shadow);
     }
 
     .copy-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 8px 25px var(--shadow);
+        filter: brightness(1.1);
     }
 
     .copy-btn:active {
@@ -169,38 +237,44 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
         padding: 15px 30px;
         border-radius: 50px;
         text-decoration: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: bold;
         transition: all 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border: 2px solid var(--glass-border);
+        box-shadow: 0 10px 30px var(--shadow);
     }
 
     .social-btn:hover {
         transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        background: var(--glass-bg);
+        box-shadow: 0 15px 40px var(--shadow);
+        filter: brightness(1.2);
     }
 
     .about-section {
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(15px);
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
         border-radius: 20px;
         padding: 40px;
         margin: 50px 0;
         text-align: center;
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        border: 2px solid var(--glass-border);
+        box-shadow: 0 20px 40px var(--shadow);
     }
 
     .about-section h2 {
         font-size: 2.5rem;
         margin-bottom: 25px;
         animation: bounce 2s infinite;
+        background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     @keyframes bounce {
@@ -213,7 +287,7 @@
         font-size: 1.2rem;
         line-height: 1.6;
         margin-bottom: 20px;
-        opacity: 0.9;
+        color: var(--text-secondary);
     }
 
     .features {
@@ -224,19 +298,22 @@
     }
 
     .feature-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
         border-radius: 15px;
         padding: 30px;
         text-align: center;
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        border: 2px solid var(--glass-border);
         transition: all 0.3s ease;
         animation: fadeInUp 1s ease-out;
+        box-shadow: 0 10px 30px var(--shadow);
     }
 
     .feature-card:hover {
         transform: translateY(-10px);
-        background: rgba(255, 255, 255, 0.2);
+        background: var(--glass-bg);
+        filter: brightness(1.1);
+        box-shadow: 0 20px 40px var(--shadow);
     }
 
     @keyframes fadeInUp {
@@ -247,7 +324,11 @@
     .feature-card h3 {
         font-size: 1.5rem;
         margin-bottom: 15px;
-        color: #ffeb3b;
+        color: var(--accent-3);
+    }
+
+    .feature-card p {
+        color: var(--text-secondary);
     }
 
     .floating-elements {
@@ -262,9 +343,11 @@
 
     .floating-element {
         position: absolute;
-        background: rgba(255, 255, 255, 0.1);
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
         border-radius: 50%;
         animation: floatAround 15s infinite linear;
+        backdrop-filter: blur(10px);
     }
 
     .floating-element:nth-child(1) {
@@ -303,17 +386,66 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: rgba(76, 175, 80, 0.9);
+        background: rgba(76, 175, 80, 0.95);
+        backdrop-filter: blur(10px);
         padding: 15px 30px;
         border-radius: 10px;
         font-weight: bold;
         z-index: 1000;
         opacity: 0;
         transition: opacity 0.3s ease;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .copy-success.show {
         opacity: 1;
+    }
+
+    /* Theme toggle button */
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 2px solid var(--glass-border);
+        border-radius: 50px;
+        padding: 10px 20px;
+        color: var(--text-primary);
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+        transform: scale(1.05);
+        filter: brightness(1.2);
+    }
+
+    /* Dark theme override */
+    [data-theme="dark"] {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1a1a1a;
+        --bg-tertiary: #2a2a2a;
+        --text-primary: #ffffff;
+        --text-secondary: #cccccc;
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --shadow: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Light theme override */
+    [data-theme="light"] {
+        --bg-primary: #f8f9fa;
+        --bg-secondary: #ffffff;
+        --bg-tertiary: #e9ecef;
+        --text-primary: #212529;
+        --text-secondary: #495057;
+        --glass-bg: rgba(0, 0, 0, 0.05);
+        --glass-border: rgba(0, 0, 0, 0.1);
+        --shadow: rgba(0, 0, 0, 0.2);
     }
 
     @media (max-width: 768px) {
@@ -322,29 +454,32 @@
         .ca-container { flex-direction: column; }
         .ca-address { font-size: 0.9rem; }
         .social-links { flex-direction: column; align-items: center; }
+        .theme-toggle { top: 10px; right: 10px; padding: 8px 16px; font-size: 0.9rem; }
     }
 </style>
 ```
 
 </head>
 <body>
-    <div class="floating-elements">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+        🌙 Dark
+    </button>
 
 ```
+<div class="floating-elements">
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+</div>
+
 <div class="container">
     <header>
         <div class="logo">
-            <!-- Replace this placeholder with your actual logo -->
-            <div class="logo-placeholder">PRO<br>LOOSER<br>LOGO</div>
-            <!-- Uncomment and replace with your actual image:
-            <img src="your-logo-url-here.jpg" alt="Pro Looser Logo">
-            -->
+            <img src="https://drive.google.com/uc?export=view&id=16LpiRp6sS1B4MHKI0vECp6hJB3Bz2dmL" alt="Professional Money Looser Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="logo-placeholder" style="display: none;">PML<br>LOGO</div>
         </div>
-        <h1>PRO LOOSER</h1>
+        <h1>PROFESSIONAL MONEY LOOSER</h1>
+        <div class="ticker">$PML</div>
         <p class="tagline">For Everyone Who Lost Money on Shitcoins & Rug Pulls</p>
     </header>
 
@@ -368,7 +503,7 @@
     <div class="about-section">
         <h2>Welcome to the Losers Club! 🎭</h2>
         <p>Been rugged? Lost your life savings on the latest "moon mission"? Got exit scammed by devs who promised "diamond hands forever"?</p>
-        <p><strong>CONGRATULATIONS!</strong> You're now qualified to join the most exclusive club in crypto - the PRO LOOSER community!</p>
+        <p><strong>CONGRATULATIONS!</strong> You're now qualified to join the most exclusive club in crypto - the Professional Money Looser ($PML) community!</p>
         <p>We're here to turn your pain into gains, your tears into cheers, and your losses into legendary memes!</p>
     </div>
 
@@ -393,6 +528,48 @@
 </div>
 
 <script>
+    // Theme management
+    function getPreferredTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeToggle(theme);
+    }
+
+    function updateThemeToggle(theme) {
+        const toggle = document.getElementById('themeToggle');
+        if (theme === 'dark') {
+            toggle.innerHTML = '☀️ Light';
+        } else {
+            toggle.innerHTML = '🌙 Dark';
+        }
+    }
+
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    }
+
+    // Initialize theme
+    document.addEventListener('DOMContentLoaded', function() {
+        setTheme(getPreferredTheme());
+    });
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
     function copyToClipboard() {
         const contractAddress = document.getElementById('contractAddress').textContent;
         navigator.clipboard.writeText(contractAddress).then(function() {
