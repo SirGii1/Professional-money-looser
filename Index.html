@@ -20,9 +20,459 @@
             --shadow: rgba(0, 0, 0, 0.5);
         }
 
-```
-    @media (prefers-color-scheme: light) {
-        :root {
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #f8f9fa;
+                --bg-secondary: #ffffff;
+                --bg-tertiary: #e9ecef;
+                --text-primary: #212529;
+                --text-secondary: #495057;
+                --glass-bg: rgba(0, 0, 0, 0.05);
+                --glass-border: rgba(0, 0, 0, 0.1);
+                --shadow: rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3), #c44569);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            font-family: 'Arial', sans-serif;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            opacity: 0.85;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+            border: 3px solid var(--glass-border);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .logo img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-placeholder {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: var(--text-primary);
+            text-shadow: 2px 2px 4px var(--shadow);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px var(--shadow);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes glow {
+            from { 
+                filter: drop-shadow(0 0 20px rgba(255, 71, 87, 0.3));
+            }
+            to { 
+                filter: drop-shadow(0 0 30px rgba(255, 71, 87, 0.6));
+            }
+        }
+
+        .ticker {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-3);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px var(--shadow);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .buy-button {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            animation: buyButtonGlow 2s ease-in-out infinite alternate;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .buy-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        @keyframes buyButtonGlow {
+            from { 
+                box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            }
+            to { 
+                box-shadow: 0 10px 30px rgba(0, 255, 136, 0.6);
+            }
+        }
+
+        .ca-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .ca-label {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .ca-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .ca-address {
+            background: var(--bg-tertiary);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            word-break: break-all;
+            max-width: 500px;
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+        }
+
+        .copy-btn {
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow);
+            filter: brightness(1.1);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            background: var(--glass-bg);
+            box-shadow: 0 15px 40px var(--shadow);
+            filter: brightness(1.2);
+        }
+
+        .about-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            animation: bounce 2s infinite;
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid var(--glass-border);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: var(--glass-bg);
+            filter: brightness(1.1);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-3);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            animation: floatAround 15s infinite linear;
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-element:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: -5s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatAround {
+            0% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(30px) rotate(240deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        .copy-success {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(76, 175, 80, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .copy-success.show {
+            opacity: 1;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 10px 20px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        /* Dark theme override */
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Light theme override */
+        [data-theme="light"] {
             --bg-primary: #f8f9fa;
             --bg-secondary: #ffffff;
             --bg-tertiary: #e9ecef;
@@ -32,602 +482,186 @@
             --glass-border: rgba(0, 0, 0, 0.1);
             --shadow: rgba(0, 0, 0, 0.2);
         }
-    }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3), #c44569);
-        background-size: 400% 400%;
-        animation: gradientShift 8s ease infinite;
-        font-family: 'Arial', sans-serif;
-        color: var(--text-primary);
-        overflow-x: hidden;
-        min-height: 100vh;
-    }
-
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--bg-primary);
-        opacity: 0.85;
-        z-index: -2;
-    }
-
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        position: relative;
-        z-index: 1;
-    }
-
-    header {
-        text-align: center;
-        padding: 60px 0;
-        position: relative;
-    }
-
-    .logo {
-        width: 200px;
-        height: 200px;
-        margin: 0 auto 30px;
-        border-radius: 50%;
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: float 3s ease-in-out infinite;
-        border: 3px solid var(--glass-border);
-        box-shadow: 0 20px 40px var(--shadow);
-    }
-
-    .logo img {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-
-    .logo-placeholder {
-        font-size: 24px;
-        font-weight: bold;
-        text-align: center;
-        color: var(--text-primary);
-        text-shadow: 2px 2px 4px var(--shadow);
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-    }
-
-    h1 {
-        font-size: 4rem;
-        font-weight: bold;
-        text-shadow: 3px 3px 6px var(--shadow);
-        margin-bottom: 20px;
-        animation: glow 2s ease-in-out infinite alternate;
-        background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-3));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    @keyframes glow {
-        from { 
-            filter: drop-shadow(0 0 20px rgba(255, 71, 87, 0.3));
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .buy-button { font-size: 1.2rem; padding: 15px 30px; }
+            .ca-container { flex-direction: column; }
+            .ca-address { font-size: 0.9rem; }
+            .social-links { flex-direction: column; align-items: center; }
+            .theme-toggle { top: 10px; right: 10px; padding: 8px 16px; font-size: 0.9rem; }
         }
-        to { 
-            filter: drop-shadow(0 0 30px rgba(255, 71, 87, 0.6));
-        }
-    }
-
-    .ticker {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: var(--accent-3);
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px var(--shadow);
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-    }
-
-    .tagline {
-        font-size: 1.5rem;
-        margin-bottom: 40px;
-        color: var(--text-secondary);
-        animation: slideInUp 1s ease-out;
-    }
-
-    @keyframes slideInUp {
-        from { transform: translateY(50px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-
-    .ca-section {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        padding: 30px;
-        margin: 40px 0;
-        text-align: center;
-        border: 2px solid var(--glass-border);
-        box-shadow: 0 20px 40px var(--shadow);
-    }
-
-    .ca-label {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-        font-weight: bold;
-        color: var(--text-primary);
-    }
-
-    .ca-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .ca-address {
-        background: var(--bg-tertiary);
-        padding: 15px 25px;
-        border-radius: 10px;
-        font-family: 'Courier New', monospace;
-        font-size: 1rem;
-        word-break: break-all;
-        max-width: 500px;
-        border: 1px solid var(--glass-border);
-        color: var(--text-primary);
-    }
-
-    .copy-btn {
-        background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
-        border: none;
-        padding: 15px 25px;
-        border-radius: 10px;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-        box-shadow: 0 5px 15px var(--shadow);
-    }
-
-    .copy-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px var(--shadow);
-        filter: brightness(1.1);
-    }
-
-    .copy-btn:active {
-        transform: translateY(0);
-    }
-
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin: 50px 0;
-        flex-wrap: wrap;
-    }
-
-    .social-btn {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        padding: 15px 30px;
-        border-radius: 50px;
-        text-decoration: none;
-        color: var(--text-primary);
-        font-weight: bold;
-        transition: all 0.3s ease;
-        border: 2px solid var(--glass-border);
-        box-shadow: 0 10px 30px var(--shadow);
-    }
-
-    .social-btn:hover {
-        transform: translateY(-5px);
-        background: var(--glass-bg);
-        box-shadow: 0 15px 40px var(--shadow);
-        filter: brightness(1.2);
-    }
-
-    .about-section {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        padding: 40px;
-        margin: 50px 0;
-        text-align: center;
-        border: 2px solid var(--glass-border);
-        box-shadow: 0 20px 40px var(--shadow);
-    }
-
-    .about-section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 25px;
-        animation: bounce 2s infinite;
-        background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-        40% { transform: translateY(-10px); }
-        60% { transform: translateY(-5px); }
-    }
-
-    .about-section p {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        color: var(--text-secondary);
-    }
-
-    .features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin: 50px 0;
-    }
-
-    .feature-card {
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        border-radius: 15px;
-        padding: 30px;
-        text-align: center;
-        border: 2px solid var(--glass-border);
-        transition: all 0.3s ease;
-        animation: fadeInUp 1s ease-out;
-        box-shadow: 0 10px 30px var(--shadow);
-    }
-
-    .feature-card:hover {
-        transform: translateY(-10px);
-        background: var(--glass-bg);
-        filter: brightness(1.1);
-        box-shadow: 0 20px 40px var(--shadow);
-    }
-
-    @keyframes fadeInUp {
-        from { transform: translateY(30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-
-    .feature-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        color: var(--accent-3);
-    }
-
-    .feature-card p {
-        color: var(--text-secondary);
-    }
-
-    .floating-elements {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-    }
-
-    .floating-element {
-        position: absolute;
-        background: var(--glass-bg);
-        border: 1px solid var(--glass-border);
-        border-radius: 50%;
-        animation: floatAround 15s infinite linear;
-        backdrop-filter: blur(10px);
-    }
-
-    .floating-element:nth-child(1) {
-        width: 60px;
-        height: 60px;
-        top: 20%;
-        left: 10%;
-        animation-delay: 0s;
-    }
-
-    .floating-element:nth-child(2) {
-        width: 40px;
-        height: 40px;
-        top: 60%;
-        right: 15%;
-        animation-delay: -5s;
-    }
-
-    .floating-element:nth-child(3) {
-        width: 80px;
-        height: 80px;
-        bottom: 20%;
-        left: 20%;
-        animation-delay: -10s;
-    }
-
-    @keyframes floatAround {
-        0% { transform: translateY(0px) rotate(0deg); }
-        33% { transform: translateY(-30px) rotate(120deg); }
-        66% { transform: translateY(30px) rotate(240deg); }
-        100% { transform: translateY(0px) rotate(360deg); }
-    }
-
-    .copy-success {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(76, 175, 80, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 15px 30px;
-        border-radius: 10px;
-        font-weight: bold;
-        z-index: 1000;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .copy-success.show {
-        opacity: 1;
-    }
-
-    /* Theme toggle button */
-    .theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--glass-bg);
-        backdrop-filter: blur(20px);
-        border: 2px solid var(--glass-border);
-        border-radius: 50px;
-        padding: 10px 20px;
-        color: var(--text-primary);
-        cursor: pointer;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        z-index: 1000;
-    }
-
-    .theme-toggle:hover {
-        transform: scale(1.05);
-        filter: brightness(1.2);
-    }
-
-    /* Dark theme override */
-    [data-theme="dark"] {
-        --bg-primary: #0a0a0a;
-        --bg-secondary: #1a1a1a;
-        --bg-tertiary: #2a2a2a;
-        --text-primary: #ffffff;
-        --text-secondary: #cccccc;
-        --glass-bg: rgba(255, 255, 255, 0.05);
-        --glass-border: rgba(255, 255, 255, 0.1);
-        --shadow: rgba(0, 0, 0, 0.5);
-    }
-
-    /* Light theme override */
-    [data-theme="light"] {
-        --bg-primary: #f8f9fa;
-        --bg-secondary: #ffffff;
-        --bg-tertiary: #e9ecef;
-        --text-primary: #212529;
-        --text-secondary: #495057;
-        --glass-bg: rgba(0, 0, 0, 0.05);
-        --glass-border: rgba(0, 0, 0, 0.1);
-        --shadow: rgba(0, 0, 0, 0.2);
-    }
-
-    @media (max-width: 768px) {
-        h1 { font-size: 2.5rem; }
-        .tagline { font-size: 1.2rem; }
-        .ca-container { flex-direction: column; }
-        .ca-address { font-size: 0.9rem; }
-        .social-links { flex-direction: column; align-items: center; }
-        .theme-toggle { top: 10px; right: 10px; padding: 8px 16px; font-size: 0.9rem; }
-    }
-</style>
-```
-
+    </style>
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
         🌙 Dark
     </button>
 
-```
-<div class="floating-elements">
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-</div>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
 
-<div class="container">
-    <header>
-        <div class="logo">
-            <img src="https://drive.google.com/uc?export=view&id=16LpiRp6sS1B4MHKI0vECp6hJB3Bz2dmL" alt="Professional Money Looser Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="logo-placeholder" style="display: none;">PML<br>LOGO</div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://drive.google.com/uc?export=view&id=16LpiRp6sS1B4MHKI0vECp6hJB3Bz2dmL" alt="Professional Money Looser Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-placeholder" style="display: none;">PML<br>LOGO</div>
+            </div>
+            <h1>PROFESSIONAL MONEY LOOSER</h1>
+            <div class="ticker">$PML</div>
+            <p class="tagline">For Everyone Who Lost Money on Shitcoins & Rug Pulls</p>
+            <a href="https://pump.fun/6cLSAnJ33ZcKe4D9pqNoV1XZpGyJrLPdraFu8pDPYSfD" target="_blank" class="buy-button">
+                🚀 BUY $PML NOW
+            </a>
+        </header>
+
+        <div class="ca-section">
+            <div class="ca-label">Contract Address (CA)</div>
+            <div class="ca-container">
+                <div class="ca-address" id="contractAddress">6cLSAnJ33ZcKe4D9pqNoV1XZpGyJrLPdraFu8pDPYSfD</div>
+                <button class="copy-btn" onclick="copyToClipboard()">📋 Copy CA</button>
+            </div>
         </div>
-        <h1>PROFESSIONAL MONEY LOOSER</h1>
-        <div class="ticker">$PML</div>
-        <p class="tagline">For Everyone Who Lost Money on Shitcoins & Rug Pulls</p>
-    </header>
 
-    <div class="ca-section">
-        <div class="ca-label">Contract Address (CA)</div>
-        <div class="ca-container">
-            <div class="ca-address" id="contractAddress">6cLSAnJ33ZcKe4D9pqNoV1XZpGyJrLPdraFu8pDPYSfD</div>
-            <button class="copy-btn" onclick="copyToClipboard()">📋 Copy CA</button>
+        <div class="social-links">
+            <a href="https://x.com/pro_looser" target="_blank" class="social-btn">
+                🐦 Follow on Twitter
+            </a>
+            <a href="https://t.me/+RnZ56vBnrXYzNzc0" target="_blank" class="social-btn">
+                💬 Join Telegram
+            </a>
+        </div>
+
+        <div class="about-section">
+            <h2>Welcome to the Losers Club! 🎭</h2>
+            <p>Been rugged? Lost your life savings on the latest "moon mission"? Got exit scammed by devs who promised "diamond hands forever"?</p>
+            <p><strong>CONGRATULATIONS!</strong> You're now qualified to join the most exclusive club in crypto - the Professional Money Looser ($PML) community!</p>
+            <p>We're here to turn your pain into gains, your tears into cheers, and your losses into legendary memes!</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>🔥 Built by Losers, for Losers</h3>
+                <p>Created by people who know the pain of watching their portfolio go to zero. We've been there, done that, bought the t-shirt (with the little money we had left).</p>
+            </div>
+            <div class="feature-card">
+                <h3>💎 Community Driven</h3>
+                <p>Join thousands of fellow "investors" who also thought LUNA was going to $1000 and that Do Kwon was a financial genius.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🚀 From Zero to Hero</h3>
+                <p>We've already hit rock bottom, so the only way is up! (We hope... no guarantees though, this is still crypto after all).</p>
+            </div>
         </div>
     </div>
 
-    <div class="social-links">
-        <a href="https://x.com/pro_looser" target="_blank" class="social-btn">
-            🐦 Follow on Twitter
-        </a>
-        <a href="https://t.me/+RnZ56vBnrXYzNzc0" target="_blank" class="social-btn">
-            💬 Join Telegram
-        </a>
+    <div class="copy-success" id="copySuccess">
+        ✅ Contract Address Copied to Clipboard!
     </div>
 
-    <div class="about-section">
-        <h2>Welcome to the Losers Club! 🎭</h2>
-        <p>Been rugged? Lost your life savings on the latest "moon mission"? Got exit scammed by devs who promised "diamond hands forever"?</p>
-        <p><strong>CONGRATULATIONS!</strong> You're now qualified to join the most exclusive club in crypto - the Professional Money Looser ($PML) community!</p>
-        <p>We're here to turn your pain into gains, your tears into cheers, and your losses into legendary memes!</p>
-    </div>
-
-    <div class="features">
-        <div class="feature-card">
-            <h3>🔥 Built by Losers, for Losers</h3>
-            <p>Created by people who know the pain of watching their portfolio go to zero. We've been there, done that, bought the t-shirt (with the little money we had left).</p>
-        </div>
-        <div class="feature-card">
-            <h3>💎 Community Driven</h3>
-            <p>Join thousands of fellow "investors" who also thought LUNA was going to $1000 and that Do Kwon was a financial genius.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🚀 From Zero to Hero</h3>
-            <p>We've already hit rock bottom, so the only way is up! (We hope... no guarantees though, this is still crypto after all).</p>
-        </div>
-    </div>
-</div>
-
-<div class="copy-success" id="copySuccess">
-    ✅ Contract Address Copied to Clipboard!
-</div>
-
-<script>
-    // Theme management
-    function getPreferredTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            return savedTheme;
+    <script>
+        // Theme management
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
 
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        updateThemeToggle(theme);
-    }
-
-    function updateThemeToggle(theme) {
-        const toggle = document.getElementById('themeToggle');
-        if (theme === 'dark') {
-            toggle.innerHTML = '☀️ Light';
-        } else {
-            toggle.innerHTML = '🌙 Dark';
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateThemeToggle(theme);
         }
-    }
 
-    function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    }
-
-    // Initialize theme
-    document.addEventListener('DOMContentLoaded', function() {
-        setTheme(getPreferredTheme());
-    });
-
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) {
-            setTheme(e.matches ? 'dark' : 'light');
+        function updateThemeToggle(theme) {
+            const toggle = document.getElementById('themeToggle');
+            if (theme === 'dark') {
+                toggle.innerHTML = '☀️ Light';
+            } else {
+                toggle.innerHTML = '🌙 Dark';
+            }
         }
-    });
 
-    function copyToClipboard() {
-        const contractAddress = document.getElementById('contractAddress').textContent;
-        navigator.clipboard.writeText(contractAddress).then(function() {
-            showCopySuccess();
-        }).catch(function(err) {
-            // Fallback for older browsers
-            const textArea = document.createElement('textarea');
-            textArea.value = contractAddress;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            showCopySuccess();
-        });
-    }
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
 
-    function showCopySuccess() {
-        const successMessage = document.getElementById('copySuccess');
-        successMessage.classList.add('show');
-        setTimeout(function() {
-            successMessage.classList.remove('show');
-        }, 2000);
-    }
-
-    // Add some random floating animations
-    function createFloatingMeme() {
-        const memes = ['💸', '📉', '💀', '🤡', '😭', '💰', '🚀', '🌙'];
-        const meme = document.createElement('div');
-        meme.textContent = memes[Math.floor(Math.random() * memes.length)];
-        meme.style.position = 'fixed';
-        meme.style.fontSize = '30px';
-        meme.style.pointerEvents = 'none';
-        meme.style.zIndex = '-1';
-        meme.style.left = Math.random() * window.innerWidth + 'px';
-        meme.style.top = window.innerHeight + 'px';
-        meme.style.opacity = '0.7';
-        document.body.appendChild(meme);
-
-        const animation = meme.animate([
-            { transform: 'translateY(0px) rotate(0deg)', opacity: 0.7 },
-            { transform: `translateY(-${window.innerHeight + 100}px) rotate(360deg)`, opacity: 0 }
-        ], {
-            duration: 8000 + Math.random() * 4000,
-            easing: 'linear'
+        // Initialize theme
+        document.addEventListener('DOMContentLoaded', function() {
+            setTheme(getPreferredTheme());
         });
 
-        animation.onfinish = () => meme.remove();
-    }
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
 
-    // Create floating memes periodically
-    setInterval(createFloatingMeme, 3000);
+        function copyToClipboard() {
+            const contractAddress = document.getElementById('contractAddress').textContent;
+            navigator.clipboard.writeText(contractAddress).then(function() {
+                showCopySuccess();
+            }).catch(function(err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = contractAddress;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopySuccess();
+            });
+        }
 
-    // Initial burst of memes
-    for (let i = 0; i < 5; i++) {
-        setTimeout(createFloatingMeme, i * 500);
-    }
-</script>
-```
+        function showCopySuccess() {
+            const successMessage = document.getElementById('copySuccess');
+            successMessage.classList.add('show');
+            setTimeout(function() {
+                successMessage.classList.remove('show');
+            }, 2000);
+        }
 
+        // Add some random floating animations
+        function createFloatingMeme() {
+            const memes = ['💸', '📉', '💀', '🤡', '😭', '💰', '🚀', '🌙'];
+            const meme = document.createElement('div');
+            meme.textContent = memes[Math.floor(Math.random() * memes.length)];
+            meme.style.position = 'fixed';
+            meme.style.fontSize = '30px';
+            meme.style.pointerEvents = 'none';
+            meme.style.zIndex = '-1';
+            meme.style.left = Math.random() * window.innerWidth + 'px';
+            meme.style.top = window.innerHeight + 'px';
+            meme.style.opacity = '0.7';
+            document.body.appendChild(meme);
+
+            const animation = meme.animate([
+                { transform: 'translateY(0px) rotate(0deg)', opacity: 0.7 },
+                { transform: `translateY(-${window.innerHeight + 100}px) rotate(360deg)`, opacity: 0 }
+            ], {
+                duration: 8000 + Math.random() * 4000,
+                easing: 'linear'
+            });
+
+            animation.onfinish = () => meme.remove();
+        }
+
+        // Create floating memes periodically
+        setInterval(createFloatingMeme, 3000);
+
+        // Initial burst of memes
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createFloatingMeme, i * 500);
+        }
+    </script>
 </body>
 </html>
