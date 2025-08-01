@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRO LOOSER - For Those Who Lost It All</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        background: linear-gradient(135deg, #ff6b6b, #ff8e53, #ff6b9d, #c44569);
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease infinite;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    header {
+        text-align: center;
+        padding: 60px 0;
+        position: relative;
+    }
+
+    .logo {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 30px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: float 3s ease-in-out infinite;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .logo-placeholder {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); }
+        to { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.6); }
+    }
+
+    .tagline {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        animation: slideInUp 1s ease-out;
+    }
+
+    @keyframes slideInUp {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 0.9; }
+    }
+
+    .ca-section {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 30px;
+        margin: 40px 0;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .ca-label {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .ca-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .ca-address {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 15px 25px;
+        border-radius: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        word-break: break-all;
+        max-width: 500px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .copy-btn {
+        background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+        border: none;
+        padding: 15px 25px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .copy-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .copy-btn:active {
+        transform: translateY(0);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 50px 0;
+        flex-wrap: wrap;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-btn:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-section {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 40px;
+        margin: 50px 0;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .about-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    .about-section p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin: 50px 0;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes fadeInUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #ffeb3b;
+    }
+
+    .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .floating-element {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: floatAround 15s infinite linear;
+    }
+
+    .floating-element:nth-child(1) {
+        width: 60px;
+        height: 60px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .floating-element:nth-child(2) {
+        width: 40px;
+        height: 40px;
+        top: 60%;
+        right: 15%;
+        animation-delay: -5s;
+    }
+
+    .floating-element:nth-child(3) {
+        width: 80px;
+        height: 80px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: -10s;
+    }
+
+    @keyframes floatAround {
+        0% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-30px) rotate(120deg); }
+        66% { transform: translateY(30px) rotate(240deg); }
+        100% { transform: translateY(0px) rotate(360deg); }
+    }
+
+    .copy-success {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(76, 175, 80, 0.9);
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: bold;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .copy-success.show {
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        .tagline { font-size: 1.2rem; }
+        .ca-container { flex-direction: column; }
+        .ca-address { font-size: 0.9rem; }
+        .social-links { flex-direction: column; align-items: center; }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+```
+<div class="container">
+    <header>
+        <div class="logo">
+            <!-- Replace this placeholder with your actual logo -->
+            <div class="logo-placeholder">PRO<br>LOOSER<br>LOGO</div>
+            <!-- Uncomment and replace with your actual image:
+            <img src="your-logo-url-here.jpg" alt="Pro Looser Logo">
+            -->
+        </div>
+        <h1>PRO LOOSER</h1>
+        <p class="tagline">For Everyone Who Lost Money on Shitcoins & Rug Pulls</p>
+    </header>
+
+    <div class="ca-section">
+        <div class="ca-label">Contract Address (CA)</div>
+        <div class="ca-container">
+            <div class="ca-address" id="contractAddress">6cLSAnJ33ZcKe4D9pqNoV1XZpGyJrLPdraFu8pDPYSfD</div>
+            <button class="copy-btn" onclick="copyToClipboard()">📋 Copy CA</button>
+        </div>
+    </div>
+
+    <div class="social-links">
+        <a href="https://x.com/pro_looser" target="_blank" class="social-btn">
+            🐦 Follow on Twitter
+        </a>
+        <a href="https://t.me/+RnZ56vBnrXYzNzc0" target="_blank" class="social-btn">
+            💬 Join Telegram
+        </a>
+    </div>
+
+    <div class="about-section">
+        <h2>Welcome to the Losers Club! 🎭</h2>
+        <p>Been rugged? Lost your life savings on the latest "moon mission"? Got exit scammed by devs who promised "diamond hands forever"?</p>
+        <p><strong>CONGRATULATIONS!</strong> You're now qualified to join the most exclusive club in crypto - the PRO LOOSER community!</p>
+        <p>We're here to turn your pain into gains, your tears into cheers, and your losses into legendary memes!</p>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <h3>🔥 Built by Losers, for Losers</h3>
+            <p>Created by people who know the pain of watching their portfolio go to zero. We've been there, done that, bought the t-shirt (with the little money we had left).</p>
+        </div>
+        <div class="feature-card">
+            <h3>💎 Community Driven</h3>
+            <p>Join thousands of fellow "investors" who also thought LUNA was going to $1000 and that Do Kwon was a financial genius.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🚀 From Zero to Hero</h3>
+            <p>We've already hit rock bottom, so the only way is up! (We hope... no guarantees though, this is still crypto after all).</p>
+        </div>
+    </div>
+</div>
+
+<div class="copy-success" id="copySuccess">
+    ✅ Contract Address Copied to Clipboard!
+</div>
+
+<script>
+    function copyToClipboard() {
+        const contractAddress = document.getElementById('contractAddress').textContent;
+        navigator.clipboard.writeText(contractAddress).then(function() {
+            showCopySuccess();
+        }).catch(function(err) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = contractAddress;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showCopySuccess();
+        });
+    }
+
+    function showCopySuccess() {
+        const successMessage = document.getElementById('copySuccess');
+        successMessage.classList.add('show');
+        setTimeout(function() {
+            successMessage.classList.remove('show');
+        }, 2000);
+    }
+
+    // Add some random floating animations
+    function createFloatingMeme() {
+        const memes = ['💸', '📉', '💀', '🤡', '😭', '💰', '🚀', '🌙'];
+        const meme = document.createElement('div');
+        meme.textContent = memes[Math.floor(Math.random() * memes.length)];
+        meme.style.position = 'fixed';
+        meme.style.fontSize = '30px';
+        meme.style.pointerEvents = 'none';
+        meme.style.zIndex = '-1';
+        meme.style.left = Math.random() * window.innerWidth + 'px';
+        meme.style.top = window.innerHeight + 'px';
+        meme.style.opacity = '0.7';
+        document.body.appendChild(meme);
+
+        const animation = meme.animate([
+            { transform: 'translateY(0px) rotate(0deg)', opacity: 0.7 },
+            { transform: `translateY(-${window.innerHeight + 100}px) rotate(360deg)`, opacity: 0 }
+        ], {
+            duration: 8000 + Math.random() * 4000,
+            easing: 'linear'
+        });
+
+        animation.onfinish = () => meme.remove();
+    }
+
+    // Create floating memes periodically
+    setInterval(createFloatingMeme, 3000);
+
+    // Initial burst of memes
+    for (let i = 0; i < 5; i++) {
+        setTimeout(createFloatingMeme, i * 500);
+    }
+</script>
+```
+
+</body>
+</html>
